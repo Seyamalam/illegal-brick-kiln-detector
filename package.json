@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "shadd": "bunx --bun shadcn@latest add"
   },
   "dependencies": {
     "@remixicon/react": "^4.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "convex": "^1.42.1",
     "next": "16.2.10",
     "radix-ui": "^1.6.1",
     "react": "19.2.4",
