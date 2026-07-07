@@ -48,6 +48,30 @@ export async function fetchRegionPredictions(
 	return parsePredictResponse(data);
 }
 
+export async function predictUploadedImage({
+	regionSlug,
+	imageDataUrl,
+}: {
+	regionSlug: string;
+	imageDataUrl: string;
+}): Promise<PredictResponse> {
+	const response = await fetch("/predict", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			region: regionSlug,
+			imageDataUrl,
+		}),
+	});
+
+	if (!response.ok) {
+		throw new Error(`Upload prediction failed with status ${response.status}`);
+	}
+
+	const data: unknown = await response.json();
+	return parsePredictResponse(data);
+}
+
 export function summarizePredictions(
 	predictions: Prediction[],
 ): PredictionSummary {
@@ -98,6 +122,10 @@ export function getConfidenceTone(confidence: number): "high" | "medium" | "low"
 
 export function getDisplayTileUrl(tileUrl: string): string | null {
 	if (tileUrl.startsWith("http://") || tileUrl.startsWith("https://")) {
+		return tileUrl;
+	}
+
+	if (tileUrl.startsWith("data:image/")) {
 		return tileUrl;
 	}
 

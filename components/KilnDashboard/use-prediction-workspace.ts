@@ -3,6 +3,7 @@ import * as React from "react";
 import type { Doc } from "@/convex/_generated/dataModel";
 import {
 	fetchRegionPredictions,
+	predictUploadedImage,
 	type PredictResponse,
 	type Prediction,
 	summarizePredictions,
@@ -17,6 +18,7 @@ type UsePredictionWorkspaceResult = {
 	selectedPrediction: Prediction | null;
 	summary: ReturnType<typeof summarizePredictions>;
 	runPrediction: () => Promise<void>;
+	runUploadPrediction: (file: File) => Promise<void>;
 	selectPrediction: (prediction: Prediction) => void;
 	clearSelectedPrediction: () => void;
 };
@@ -92,6 +94,45 @@ export function usePredictionWorkspace(
 		}
 	}, [region]);
 
+	const runUploadPrediction = React.useCallback(
+		async (file: File) => {
+			if (!region) {
+				return;
+			}
+
+			setRequestState({
+				regionId: region._id,
+				status: "loading",
+				response: null,
+				errorMessage: null,
+			});
+			setSelectedPredictionId(null);
+
+			try {
+				const imageDataUrl = await fileToDataUrl(file);
+				const result = await predictUploadedImage({
+					regionSlug: region.slug,
+					imageDataUrl,
+				});
+				setRequestState({
+					regionId: region._id,
+					status: "success",
+					response: result,
+					errorMessage: null,
+				});
+			} catch (error) {
+				setRequestState({
+					regionId: region._id,
+					status: "error",
+					response: null,
+					errorMessage:
+						error instanceof Error ? error.message : "Upload prediction failed",
+				});
+			}
+		},
+		[region],
+	);
+
 	return {
 		status,
 		response,
@@ -99,7 +140,24 @@ export function usePredictionWorkspace(
 		selectedPrediction,
 		summary,
 		runPrediction,
+		runUploadPrediction,
 		selectPrediction: (prediction) => setSelectedPredictionId(prediction.id),
 		clearSelectedPrediction: () => setSelectedPredictionId(null),
 	};
+}
+
+function fileToDataUrl(file: File): Promise<string> {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.addEventListener("load", () => {
+			if (typeof reader.result === "string") {
+				resolve(reader.result);
+				return;
+			}
+
+			reject(new Error("Could not read uploaded image"));
+		});
+		reader.addEventListener("error", () => reject(reader.error));
+		reader.readAsDataURL(file);
+	});
 }

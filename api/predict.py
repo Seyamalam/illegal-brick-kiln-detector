@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 import json
 import math
 import os
@@ -9,6 +10,7 @@ import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
+from io import BytesIO
 from pathlib import Path
 from typing import Any
 
@@ -30,6 +32,7 @@ DEFAULT_CONFIDENCE = float(os.environ.get("KILN_CONFIDENCE_THRESHOLD", "0.35"))
 DEFAULT_IOU = float(os.environ.get("KILN_IOU_THRESHOLD", "0.45"))
 MAX_TILES_PER_REGION = int(os.environ.get("KILN_MAX_TILES_PER_REGION", "25"))
 MAX_DETECTIONS = int(os.environ.get("KILN_MAX_DETECTIONS", "100"))
+MAX_UPLOAD_BYTES = int(os.environ.get("KILN_MAX_UPLOAD_BYTES", str(5 * 1024 * 1024)))
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = Path(os.environ.get("KILN_MODEL_PATH", PROJECT_ROOT / "model" / "best.tflite"))
@@ -60,7 +63,7 @@ def _json_response(handler: BaseHTTPRequestHandler, status: int, body: dict[str,
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json")
     handler.send_header("Access-Control-Allow-Origin", "*")
-    handler.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+    handler.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
     handler.send_header("Access-Control-Allow-Headers", "Content-Type")
     handler.send_header("Content-Length", str(len(payload)))
     handler.end_headers()
@@ -90,11 +93,7 @@ def _load_manifest() -> dict[str, list[Tile]]:
     if _MANIFEST_CACHE is not None:
         return _MANIFEST_CACHE
 
-    manifest_url = os.environ.get("KILN_TILE_MANIFEST_URL")
-    if manifest_url:
-        with urllib.request.urlopen(manifest_url, timeout=10) as response:
-            raw_manifest = json.loads(response.read().decode("utf-8"))
-    elif MANIFEST_PATH.exists():
+    if MANIFEST_PATH.exists():
         raw_manifest = json.loads(MANIFEST_PATH.read_text())
     else:
         _MANIFEST_CACHE = {}
@@ -336,11 +335,56 @@ def predict_region(region: str, confidence: float, iou: float) -> dict[str, Any]
     }
 
 
+def predict_uploaded_image(
+    region: str,
+    image_data_url: str,
+    confidence: float,
+    iou: float,
+) -> dict[str, Any]:
+    image = _image_from_data_url(image_data_url)
+    tile = _upload_tile(region, image_data_url)
+    _load_interpreter()
+    output = _run_model(_prepare_image(image))
+
+    return {
+        "region": region,
+        "generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "predictions": _decode_output(output, tile, confidence, iou)[:MAX_DETECTIONS],
+    }
+
+
+def _upload_tile(region: str, image_data_url: str) -> Tile:
+    region_tiles = _load_manifest().get(region, [])
+    reference = region_tiles[0] if region_tiles else None
+
+    return Tile(
+        tile_id=f"{region}_upload",
+        url=image_data_url,
+        path=None,
+        center_lat=reference.center_lat if reference else 23.685,
+        center_lon=reference.center_lon if reference else 90.3563,
+        lat_delta=reference.lat_delta if reference else 0.0128,
+        lon_delta=reference.lon_delta if reference else 0.0128,
+    )
+
+
+def _image_from_data_url(image_data_url: str) -> Image.Image:
+    if "," not in image_data_url or not image_data_url.startswith("data:image/"):
+        raise ValueError("imageDataUrl must be an image data URL")
+
+    _, encoded = image_data_url.split(",", 1)
+    raw = base64.b64decode(encoded, validate=True)
+    if len(raw) > MAX_UPLOAD_BYTES:
+        raise ValueError("Uploaded image is too large")
+
+    return Image.open(BytesIO(raw)).convert("RGB")
+
+
 class handler(BaseHTTPRequestHandler):
     def do_OPTIONS(self) -> None:
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
 
@@ -378,6 +422,45 @@ class handler(BaseHTTPRequestHandler):
         finally:
             elapsed_ms = math.floor((time.perf_counter() - started_at) * 1000)
             print(f"GET {self.path} completed in {elapsed_ms}ms")
+
+    def do_POST(self) -> None:
+        started_at = time.perf_counter()
+        try:
+            content_length = int(self.headers.get("Content-Length", "0"))
+            if content_length <= 0 or content_length > MAX_UPLOAD_BYTES * 2:
+                raise ValueError("Invalid upload payload size")
+
+            payload = json.loads(self.rfile.read(content_length).decode("utf-8"))
+            region = str(payload.get("region", ""))
+            image_data_url = str(payload.get("imageDataUrl", ""))
+            confidence = float(payload.get("confidence", DEFAULT_CONFIDENCE))
+            iou = float(payload.get("iou", DEFAULT_IOU))
+
+            if region not in SUPPORTED_REGIONS:
+                _json_response(
+                    self,
+                    400,
+                    {
+                        "error": "unsupported_region",
+                        "supportedRegions": sorted(SUPPORTED_REGIONS),
+                    },
+                )
+                return
+
+            _json_response(self, 200, predict_uploaded_image(region, image_data_url, confidence, iou))
+        except Exception as exc:
+            print(f"upload prediction failed: {type(exc).__name__}: {exc}")
+            _json_response(
+                self,
+                503,
+                {
+                    "error": "prediction_failed",
+                    "message": str(exc),
+                },
+            )
+        finally:
+            elapsed_ms = math.floor((time.perf_counter() - started_at) * 1000)
+            print(f"POST {self.path} completed in {elapsed_ms}ms")
 
 
 if __name__ == "__main__":
