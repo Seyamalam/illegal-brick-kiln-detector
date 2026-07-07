@@ -9,6 +9,7 @@
   "functions": {
     "api/predict.py": {
       "maxDuration": 60,
+      "includeFiles": "public/demo-tiles/**",
       "excludeFiles": "{model/*.pt,model/*.ipynb,model/tiles.example.json,scripts/**,docs/**}"
     }
   }
