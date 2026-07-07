@@ -1,0 +1,14 @@
+{
+  "regions": {
+    "brahmanbaria": [
+      {
+        "id": "brahmanbaria_tile_001",
+        "path": "public/sample-tiles/brahmanbaria_tile_001.png",
+        "centerLat": 23.9571,
+        "centerLon": 91.1119,
+        "latDelta": 0.01,
+        "lonDelta": 0.01
+      }
+    ]
+  }
+}
