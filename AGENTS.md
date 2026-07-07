@@ -30,7 +30,12 @@ No automated test framework is currently configured. For now, validate changes w
 
 ## Commit & Pull Request Guidelines
 
-Keep commits atomic: commit only the files you touched and list each path explicitly. For tracked files run `git commit -m "<scoped message>" -- path/to/file1 path/to/file2`. For brand-new files, use the one-liner `git restore --staged :/ && git add "path/to/file1" "path/to/file2" && git commit -m "<scoped message>" -- path/to/file1 path/to/file2`. Always check the changed files by `git status` before committing. Never commit files from the thread context. Never commit unless you're explicitly told to. Never change any file content before committing. Never include all changes in a single commit. Split them by actual purposes. PRs should explain user-visible impact, list Convex/schema or config changes, and link related issues. Pull requests should include a short summary, validation steps, and linked issues when relevant. Note any Convex schema, environment, or migration impact explicitly.
+Keep commits atomic: commit only the files you touched and list each path explicitly. For tracked files run `git commit -m "<scoped message>" -- path/to/file1 path/to/file2`. For brand-new files, use the one-liner `git restore --staged :/ && git add "path/to/file1" "path/to/file2" && git commit -m "<scoped message>" -- path/to/file1 path/to/file2`.
+- Never commit unless you're explicitly told to. Even if the plan includes any "Commit Plan". Use that "Commit Plan" only when you're explicitly told to commit
+- Always check the changed files by `git status` before committing. Never commit files from the thread context.
+- Never change any file content before committing.
+- Never include all changes in a single commit. Split them by actual purposes.
+- PRs should explain user-visible impact, list Convex/schema or config changes, and link related issues. Pull requests should include a short summary, validation steps, and linked issues when relevant. Note any Convex schema, environment, or migration impact explicitly.
 
 ## Security & Configuration Tips
 
