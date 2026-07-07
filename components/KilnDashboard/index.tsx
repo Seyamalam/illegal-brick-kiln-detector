@@ -4,7 +4,7 @@ import * as React from "react";
 import { useQuery } from "convex/react";
 
 import { api } from "@/convex/_generated/api";
-import type { Id } from "@/convex/_generated/dataModel";
+import type { Doc, Id } from "@/convex/_generated/dataModel";
 import { Badge } from "@/components/ui/badge";
 import {
 	Card,
@@ -17,17 +17,86 @@ import {
 } from "@/components/ui/card";
 import { DashboardSkeleton } from "./DashboardSkeleton";
 import { EmptyRegionsState } from "./EmptyRegionsState";
+import { PredictionWorkspace } from "./PredictionWorkspace";
 import { RegionStatus } from "./RegionStatus";
 import { RegionSwitcher } from "./RegionSwitcher";
 
+const hasConfiguredConvex = Boolean(process.env.NEXT_PUBLIC_CONVEX_URL);
+
+const localDemoRegions = [
+	{
+		_id: "local_brahmanbaria" as Id<"regions">,
+		_creationTime: 0,
+		slug: "brahmanbaria",
+		name: "Brahmanbaria",
+		centerLat: 23.9571,
+		centerLon: 91.1119,
+		defaultZoom: 11,
+		lastUpdated: 0,
+	},
+	{
+		_id: "local_jessore" as Id<"regions">,
+		_creationTime: 0,
+		slug: "jessore",
+		name: "Jessore",
+		centerLat: 23.1634,
+		centerLon: 89.2182,
+		defaultZoom: 11,
+		lastUpdated: 0,
+	},
+	{
+		_id: "local_manikganj" as Id<"regions">,
+		_creationTime: 0,
+		slug: "manikganj",
+		name: "Manikganj",
+		centerLat: 23.8617,
+		centerLon: 90.0003,
+		defaultZoom: 11,
+		lastUpdated: 0,
+	},
+	{
+		_id: "local_mymensingh" as Id<"regions">,
+		_creationTime: 0,
+		slug: "mymensingh",
+		name: "Mymensingh",
+		centerLat: 24.7471,
+		centerLon: 90.4203,
+		defaultZoom: 11,
+		lastUpdated: 0,
+	},
+	{
+		_id: "local_tangail" as Id<"regions">,
+		_creationTime: 0,
+		slug: "tangail",
+		name: "Tangail",
+		centerLat: 24.2513,
+		centerLon: 89.9167,
+		defaultZoom: 11,
+		lastUpdated: 0,
+	},
+] satisfies Doc<"regions">[];
+
 export function KilnDashboard() {
+	if (!hasConfiguredConvex) {
+		return <KilnDashboardView regions={localDemoRegions} />;
+	}
+
+	return <ConvexKilnDashboard />;
+}
+
+function ConvexKilnDashboard() {
 	const regions = useQuery(api.regions.getRegions);
-	const [selectedRegionId, setSelectedRegionId] =
-		React.useState<Id<"regions"> | null>(null);
 
 	if (regions === undefined) {
 		return <DashboardSkeleton />;
 	}
+
+	return <KilnDashboardView regions={regions} />;
+}
+
+function KilnDashboardView({ regions }: { regions: Doc<"regions">[] }) {
+	const [selectedRegionId, setSelectedRegionId] =
+		React.useState<Id<"regions"> | null>(null);
 
 	if (regions.length === 0) {
 		return <EmptyRegionsState />;
@@ -72,6 +141,8 @@ export function KilnDashboard() {
 						<Badge variant="outline">Connected</Badge>
 					</CardFooter>
 				</Card>
+
+				<PredictionWorkspace region={selectedRegion} />
 			</div>
 		</main>
 	);

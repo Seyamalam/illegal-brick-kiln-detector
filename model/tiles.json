@@ -1,0 +1,106 @@
+{
+  "regions": {
+    "brahmanbaria": [
+      {
+        "id": "bd_demo_tile_01",
+        "url": "/demo-tiles/bd_demo_tile_01.png",
+        "centerLat": 23.6349,
+        "centerLon": 90.403,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.6349_90.4030.png"
+      },
+      {
+        "id": "bd_demo_tile_02",
+        "url": "/demo-tiles/bd_demo_tile_02.png",
+        "centerLat": 26.6804,
+        "centerLon": 92.493,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "26.6804_92.4930.png"
+      },
+      {
+        "id": "bd_demo_tile_03",
+        "url": "/demo-tiles/bd_demo_tile_03.png",
+        "centerLat": 26.5215,
+        "centerLon": 88.1612,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "26.5215_88.1612.png"
+      },
+      {
+        "id": "bd_demo_tile_04",
+        "url": "/demo-tiles/bd_demo_tile_04.png",
+        "centerLat": 21.1085,
+        "centerLon": 92.182,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "21.1085_92.1820.png"
+      },
+      {
+        "id": "bd_demo_tile_05",
+        "url": "/demo-tiles/bd_demo_tile_05.png",
+        "centerLat": 21.924,
+        "centerLon": 88.0019,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "21.9240_88.0019.png"
+      },
+      {
+        "id": "bd_demo_tile_06",
+        "url": "/demo-tiles/bd_demo_tile_06.png",
+        "centerLat": 24.1828,
+        "centerLon": 88.2141,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.1828_88.2141.png"
+      },
+      {
+        "id": "bd_demo_tile_07",
+        "url": "/demo-tiles/bd_demo_tile_07.png",
+        "centerLat": 26.2418,
+        "centerLon": 90.3397,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "26.2418_90.3397.png"
+      },
+      {
+        "id": "bd_demo_tile_08",
+        "url": "/demo-tiles/bd_demo_tile_08.png",
+        "centerLat": 24.5304,
+        "centerLon": 92.6132,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.5304_92.6132.png"
+      },
+      {
+        "id": "bd_demo_tile_09",
+        "url": "/demo-tiles/bd_demo_tile_09.png",
+        "centerLat": 22.9172,
+        "centerLon": 91.932,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "22.9172_91.9320.png"
+      },
+      {
+        "id": "bd_demo_tile_10",
+        "url": "/demo-tiles/bd_demo_tile_10.png",
+        "centerLat": 22.026,
+        "centerLon": 90.2408,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "22.0260_90.2408.png"
+      }
+    ]
+  }
+}

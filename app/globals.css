@@ -28,6 +28,10 @@
     --chart-3: oklch(0.442 0.017 285.786);
     --chart-4: oklch(0.37 0.013 285.805);
     --chart-5: oklch(0.274 0.006 286.033);
+    --confidence-high: oklch(0.577 0.245 27.325);
+    --confidence-medium: oklch(0.769 0.188 70.08);
+    --confidence-low: oklch(0.552 0.016 285.938);
+    --detection-fill: oklch(0.577 0.245 27.325 / 12%);
     --radius: 0.625rem;
     --sidebar: oklch(0.985 0 0);
     --sidebar-foreground: oklch(0.141 0.005 285.823);
@@ -63,6 +67,10 @@
     --chart-3: oklch(0.442 0.017 285.786);
     --chart-4: oklch(0.37 0.013 285.805);
     --chart-5: oklch(0.274 0.006 286.033);
+    --confidence-high: oklch(0.704 0.191 22.216);
+    --confidence-medium: oklch(0.837 0.164 84.429);
+    --confidence-low: oklch(0.705 0.015 286.067);
+    --detection-fill: oklch(0.704 0.191 22.216 / 18%);
     --sidebar: oklch(0.21 0.006 285.885);
     --sidebar-foreground: oklch(0.985 0 0);
     --sidebar-primary: oklch(0.723 0.219 149.579);
@@ -89,6 +97,10 @@
     --color-chart-3: var(--chart-3);
     --color-chart-2: var(--chart-2);
     --color-chart-1: var(--chart-1);
+    --color-confidence-high: var(--confidence-high);
+    --color-confidence-medium: var(--confidence-medium);
+    --color-confidence-low: var(--confidence-low);
+    --color-detection-fill: var(--detection-fill);
     --color-ring: var(--ring);
     --color-input: var(--input);
     --color-border: var(--border);

@@ -59,6 +59,9 @@ def _json_response(handler: BaseHTTPRequestHandler, status: int, body: dict[str,
     payload = json.dumps(body, separators=(",", ":")).encode("utf-8")
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json")
+    handler.send_header("Access-Control-Allow-Origin", "*")
+    handler.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+    handler.send_header("Access-Control-Allow-Headers", "Content-Type")
     handler.send_header("Content-Length", str(len(payload)))
     handler.end_headers()
     handler.wfile.write(payload)
@@ -126,6 +129,9 @@ def _parse_tile(tile: dict[str, Any]) -> Tile:
 
 def _open_tile_image(tile: Tile) -> Image.Image:
     if tile.url:
+        if tile.url.startswith("/"):
+            return Image.open(PROJECT_ROOT / "public" / tile.url.lstrip("/")).convert("RGB")
+
         with urllib.request.urlopen(tile.url, timeout=10) as response:
             return Image.open(response).convert("RGB")
 
@@ -258,6 +264,7 @@ def _prediction_from_detection(
     lat = tile.center_lat + (0.5 - normalized_y) * tile.lat_delta
     lon = tile.center_lon + (normalized_x - 0.5) * tile.lon_delta
     class_name = CLASS_NAMES[int(detection["classIndex"])]
+    points = _obb_points(detection)
 
     return {
         "id": f"{tile.tile_id}_{detection_index}_{class_name.lower()}",
@@ -266,7 +273,48 @@ def _prediction_from_detection(
         "confidence": max(0.0, min(1.0, float(detection["confidence"]))),
         "label": "kiln",
         "tileUrl": tile.url or tile.path or "",
+        "className": class_name,
+        "box": {
+            "type": "obb",
+            "imageSize": INPUT_SIZE,
+            "points": points,
+        },
     }
+
+
+def _obb_points(detection: dict[str, Any]) -> list[list[float]]:
+    x = float(detection["x"])
+    y = float(detection["y"])
+    width = float(detection["w"])
+    height = float(detection["h"])
+
+    if 0.0 <= x <= 1.0 and 0.0 <= y <= 1.0:
+        x *= INPUT_SIZE
+        y *= INPUT_SIZE
+    if 0.0 <= width <= 1.0 and 0.0 <= height <= 1.0:
+        width *= INPUT_SIZE
+        height *= INPUT_SIZE
+
+    half_w = width / 2
+    half_h = height / 2
+    angle = float(detection["angle"])
+    cos_a = math.cos(angle)
+    sin_a = math.sin(angle)
+
+    corners = [
+        (-half_w, -half_h),
+        (half_w, -half_h),
+        (half_w, half_h),
+        (-half_w, half_h),
+    ]
+
+    return [
+        [
+            max(0.0, min(float(INPUT_SIZE), x + dx * cos_a - dy * sin_a)),
+            max(0.0, min(float(INPUT_SIZE), y + dx * sin_a + dy * cos_a)),
+        ]
+        for dx, dy in corners
+    ]
 
 
 def predict_region(region: str, confidence: float, iou: float) -> dict[str, Any]:
@@ -289,6 +337,13 @@ def predict_region(region: str, confidence: float, iou: float) -> dict[str, Any]
 
 
 class handler(BaseHTTPRequestHandler):
+    def do_OPTIONS(self) -> None:
+        self.send_response(204)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
     def do_GET(self) -> None:
         started_at = time.perf_counter()
         try:
