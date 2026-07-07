@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "brahmanbaria",
+    "name": "Brahmanbaria",
+    "centerLat": 23.9571,
+    "centerLon": 91.1119,
+    "defaultZoom": 11,
+    "lastUpdated": 0
+  },
+  {
+    "slug": "jessore",
+    "name": "Jessore",
+    "centerLat": 23.1667,
+    "centerLon": 89.2167,
+    "defaultZoom": 11,
+    "lastUpdated": 0
+  },
+  {
+    "slug": "manikganj",
+    "name": "Manikganj",
+    "centerLat": 23.8644,
+    "centerLon": 89.9772,
+    "defaultZoom": 11,
+    "lastUpdated": 0
+  },
+  {
+    "slug": "tangail",
+    "name": "Tangail",
+    "centerLat": 24.2513,
+    "centerLon": 89.9167,
+    "defaultZoom": 11,
+    "lastUpdated": 0
+  },
+  {
+    "slug": "mymensingh",
+    "name": "Mymensingh",
+    "centerLat": 24.7471,
+    "centerLon": 90.4203,
+    "defaultZoom": 11,
+    "lastUpdated": 0
+  }
+]
