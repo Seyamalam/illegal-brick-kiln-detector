@@ -14,6 +14,11 @@ Use the package scripts in `package.json`:
 - `bun run start` serves the production build after `build`.
 - `bun run lint` runs ESLint with Next.js core web vitals and TypeScript rules.
 - `bun run shadd <component>` adds shadcn components through `bunx --bun shadcn@latest add`.
+- `bun run convex` runs Convex dev server once.
+- `bun run convex:gen` generates Convex client code.
+- `bun run convex:watch` runs Convex dev server in watch mode.
+- `bun run convex:deploy` deploys the Convex backend.
+- `bun run convex:dash` opens the Convex dashboard.
 
 ## Coding Style & Naming Conventions
 
