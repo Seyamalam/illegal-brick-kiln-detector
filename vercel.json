@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/predict",
+      "destination": "/api/predict"
+    }
+  ],
+  "functions": {
+    "api/predict.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{model/*.pt,model/*.ipynb,model/tiles.example.json,scripts/**,docs/**}"
+    }
+  }
+}
