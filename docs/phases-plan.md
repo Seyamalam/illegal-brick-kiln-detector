@@ -113,8 +113,6 @@ Validation:
 Purpose: create the stable ML boundary and a UI-testable way to ingest predictions into Convex.
 
 Backend:
-- Add `lib/regions.ts`.
-  - Shared typed constants for the five supported region slugs, display names, centers, and default zooms.
 - Add `lib/mock-predict.ts`.
   - Exports deterministic prediction fixtures.
   - 15-25 predictions per region.
