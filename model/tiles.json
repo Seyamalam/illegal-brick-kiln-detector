@@ -1,0 +1,514 @@
+{
+  "regions": {
+    "brahmanbaria": [
+      {
+        "id": "brahmanbaria_demo_tile_01",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_01.png",
+        "centerLat": 23.9497,
+        "centerLon": 91.1408,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.9497_91.1408.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_02",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_02.png",
+        "centerLat": 24.0084,
+        "centerLon": 91.1232,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0084_91.1232.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_03",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_03.png",
+        "centerLat": 23.926,
+        "centerLon": 91.0644,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.9260_91.0644.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_04",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_04.png",
+        "centerLat": 23.9172,
+        "centerLon": 91.0644,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.9172_91.0644.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_05",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_05.png",
+        "centerLat": 24.0462,
+        "centerLon": 91.1644,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0462_91.1644.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_06",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_06.png",
+        "centerLat": 24.0348,
+        "centerLon": 91.182,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0348_91.1820.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_07",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_07.png",
+        "centerLat": 23.8497,
+        "centerLon": 91.153,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8497_91.1530.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_08",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_08.png",
+        "centerLat": 24.0497,
+        "centerLon": 91.182,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0497_91.1820.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_09",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_09.png",
+        "centerLat": 24.0348,
+        "centerLon": 91.1996,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0348_91.1996.png"
+      },
+      {
+        "id": "brahmanbaria_demo_tile_10",
+        "url": "/demo-tiles/brahmanbaria_demo_tile_10.png",
+        "centerLat": 24.0462,
+        "centerLon": 91.1908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0462_91.1908.png"
+      }
+    ],
+    "jessore": [
+      {
+        "id": "jessore_demo_tile_01",
+        "url": "/demo-tiles/jessore_demo_tile_01.png",
+        "centerLat": 23.1349,
+        "centerLon": 89.2496,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.1349_89.2496.png"
+      },
+      {
+        "id": "jessore_demo_tile_02",
+        "url": "/demo-tiles/jessore_demo_tile_02.png",
+        "centerLat": 23.2173,
+        "centerLon": 89.2029,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.2173_89.2029.png"
+      },
+      {
+        "id": "jessore_demo_tile_03",
+        "url": "/demo-tiles/jessore_demo_tile_03.png",
+        "centerLat": 23.0997,
+        "centerLon": 89.2029,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.0997_89.2029.png"
+      },
+      {
+        "id": "jessore_demo_tile_04",
+        "url": "/demo-tiles/jessore_demo_tile_04.png",
+        "centerLat": 23.1261,
+        "centerLon": 89.2732,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.1261_89.2732.png"
+      },
+      {
+        "id": "jessore_demo_tile_05",
+        "url": "/demo-tiles/jessore_demo_tile_05.png",
+        "centerLat": 23.2349,
+        "centerLon": 89.1908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.2349_89.1908.png"
+      },
+      {
+        "id": "jessore_demo_tile_06",
+        "url": "/demo-tiles/jessore_demo_tile_06.png",
+        "centerLat": 23.2173,
+        "centerLon": 89.153,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.2173_89.1530.png"
+      },
+      {
+        "id": "jessore_demo_tile_07",
+        "url": "/demo-tiles/jessore_demo_tile_07.png",
+        "centerLat": 23.0761,
+        "centerLon": 89.2143,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.0761_89.2143.png"
+      },
+      {
+        "id": "jessore_demo_tile_08",
+        "url": "/demo-tiles/jessore_demo_tile_08.png",
+        "centerLat": 23.1261,
+        "centerLon": 89.2996,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.1261_89.2996.png"
+      },
+      {
+        "id": "jessore_demo_tile_09",
+        "url": "/demo-tiles/jessore_demo_tile_09.png",
+        "centerLat": 23.0997,
+        "centerLon": 89.153,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.0997_89.1530.png"
+      },
+      {
+        "id": "jessore_demo_tile_10",
+        "url": "/demo-tiles/jessore_demo_tile_10.png",
+        "centerLat": 23.1496,
+        "centerLon": 89.3144,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.1496_89.3144.png"
+      }
+    ],
+    "manikganj": [
+      {
+        "id": "manikganj_demo_tile_01",
+        "url": "/demo-tiles/manikganj_demo_tile_01.png",
+        "centerLat": 23.8085,
+        "centerLon": 90.0232,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8085_90.0232.png"
+      },
+      {
+        "id": "manikganj_demo_tile_02",
+        "url": "/demo-tiles/manikganj_demo_tile_02.png",
+        "centerLat": 23.8963,
+        "centerLon": 90.0496,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8963_90.0496.png"
+      },
+      {
+        "id": "manikganj_demo_tile_03",
+        "url": "/demo-tiles/manikganj_demo_tile_03.png",
+        "centerLat": 23.8996,
+        "centerLon": 90.0496,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8996_90.0496.png"
+      },
+      {
+        "id": "manikganj_demo_tile_04",
+        "url": "/demo-tiles/manikganj_demo_tile_04.png",
+        "centerLat": 23.7997,
+        "centerLon": 90.0232,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.7997_90.0232.png"
+      },
+      {
+        "id": "manikganj_demo_tile_05",
+        "url": "/demo-tiles/manikganj_demo_tile_05.png",
+        "centerLat": 23.8497,
+        "centerLon": 89.932,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8497_89.9320.png"
+      },
+      {
+        "id": "manikganj_demo_tile_06",
+        "url": "/demo-tiles/manikganj_demo_tile_06.png",
+        "centerLat": 23.7997,
+        "centerLon": 90.0408,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.7997_90.0408.png"
+      },
+      {
+        "id": "manikganj_demo_tile_07",
+        "url": "/demo-tiles/manikganj_demo_tile_07.png",
+        "centerLat": 23.7997,
+        "centerLon": 90.0496,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.7997_90.0496.png"
+      },
+      {
+        "id": "manikganj_demo_tile_08",
+        "url": "/demo-tiles/manikganj_demo_tile_08.png",
+        "centerLat": 23.8173,
+        "centerLon": 90.0732,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8173_90.0732.png"
+      },
+      {
+        "id": "manikganj_demo_tile_09",
+        "url": "/demo-tiles/manikganj_demo_tile_09.png",
+        "centerLat": 23.8497,
+        "centerLon": 89.903,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8497_89.9030.png"
+      },
+      {
+        "id": "manikganj_demo_tile_10",
+        "url": "/demo-tiles/manikganj_demo_tile_10.png",
+        "centerLat": 23.8996,
+        "centerLon": 90.0908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "23.8996_90.0908.png"
+      }
+    ],
+    "tangail": [
+      {
+        "id": "tangail_demo_tile_01",
+        "url": "/demo-tiles/tangail_demo_tile_01.png",
+        "centerLat": 24.3261,
+        "centerLon": 90.0144,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.3261_90.0144.png"
+      },
+      {
+        "id": "tangail_demo_tile_02",
+        "url": "/demo-tiles/tangail_demo_tile_02.png",
+        "centerLat": 24.1261,
+        "centerLon": 89.8732,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.1261_89.8732.png"
+      },
+      {
+        "id": "tangail_demo_tile_03",
+        "url": "/demo-tiles/tangail_demo_tile_03.png",
+        "centerLat": 24.1085,
+        "centerLon": 89.8908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.1085_89.8908.png"
+      },
+      {
+        "id": "tangail_demo_tile_04",
+        "url": "/demo-tiles/tangail_demo_tile_04.png",
+        "centerLat": 24.0997,
+        "centerLon": 89.8908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0997_89.8908.png"
+      },
+      {
+        "id": "tangail_demo_tile_05",
+        "url": "/demo-tiles/tangail_demo_tile_05.png",
+        "centerLat": 24.1584,
+        "centerLon": 90.0496,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.1584_90.0496.png"
+      },
+      {
+        "id": "tangail_demo_tile_06",
+        "url": "/demo-tiles/tangail_demo_tile_06.png",
+        "centerLat": 24.1584,
+        "centerLon": 90.053,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.1584_90.0530.png"
+      },
+      {
+        "id": "tangail_demo_tile_07",
+        "url": "/demo-tiles/tangail_demo_tile_07.png",
+        "centerLat": 24.4172,
+        "centerLon": 89.8908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.4172_89.8908.png"
+      },
+      {
+        "id": "tangail_demo_tile_08",
+        "url": "/demo-tiles/tangail_demo_tile_08.png",
+        "centerLat": 24.3173,
+        "centerLon": 90.0732,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.3173_90.0732.png"
+      },
+      {
+        "id": "tangail_demo_tile_09",
+        "url": "/demo-tiles/tangail_demo_tile_09.png",
+        "centerLat": 24.2349,
+        "centerLon": 90.0908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.2349_90.0908.png"
+      },
+      {
+        "id": "tangail_demo_tile_10",
+        "url": "/demo-tiles/tangail_demo_tile_10.png",
+        "centerLat": 24.0761,
+        "centerLon": 89.882,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.0761_89.8820.png"
+      }
+    ],
+    "mymensingh": [
+      {
+        "id": "mymensingh_demo_tile_01",
+        "url": "/demo-tiles/mymensingh_demo_tile_01.png",
+        "centerLat": 24.7261,
+        "centerLon": 90.3908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7261_90.3908.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_02",
+        "url": "/demo-tiles/mymensingh_demo_tile_02.png",
+        "centerLat": 24.7349,
+        "centerLon": 90.382,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7349_90.3820.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_03",
+        "url": "/demo-tiles/mymensingh_demo_tile_03.png",
+        "centerLat": 24.7261,
+        "centerLon": 90.3732,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7261_90.3732.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_04",
+        "url": "/demo-tiles/mymensingh_demo_tile_04.png",
+        "centerLat": 24.7496,
+        "centerLon": 90.3644,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7496_90.3644.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_05",
+        "url": "/demo-tiles/mymensingh_demo_tile_05.png",
+        "centerLat": 24.7997,
+        "centerLon": 90.4408,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7997_90.4408.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_06",
+        "url": "/demo-tiles/mymensingh_demo_tile_06.png",
+        "centerLat": 24.7261,
+        "centerLon": 90.3644,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7261_90.3644.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_07",
+        "url": "/demo-tiles/mymensingh_demo_tile_07.png",
+        "centerLat": 24.7463,
+        "centerLon": 90.4908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.7463_90.4908.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_08",
+        "url": "/demo-tiles/mymensingh_demo_tile_08.png",
+        "centerLat": 24.8261,
+        "centerLon": 90.432,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.8261_90.4320.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_09",
+        "url": "/demo-tiles/mymensingh_demo_tile_09.png",
+        "centerLat": 24.6584,
+        "centerLon": 90.403,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.6584_90.4030.png"
+      },
+      {
+        "id": "mymensingh_demo_tile_10",
+        "url": "/demo-tiles/mymensingh_demo_tile_10.png",
+        "centerLat": 24.6463,
+        "centerLon": 90.3908,
+        "latDelta": 0.0128,
+        "lonDelta": 0.0128,
+        "source": "SustainabilityLabIITGN/SentinelKilnDB val split",
+        "sourceImageName": "24.6463_90.3908.png"
+      }
+    ]
+  }
+}
