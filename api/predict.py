@@ -126,10 +126,18 @@ def _parse_tile(tile: dict[str, Any]) -> Tile:
     )
 
 
-def _open_tile_image(tile: Tile) -> Image.Image:
+def _open_tile_image(tile: Tile, base_url: str | None = None) -> Image.Image:
     if tile.url:
         if tile.url.startswith("/"):
-            return Image.open(PROJECT_ROOT / "public" / tile.url.lstrip("/")).convert("RGB")
+            public_path = PROJECT_ROOT / "public" / tile.url.lstrip("/")
+            if public_path.exists():
+                return Image.open(public_path).convert("RGB")
+
+            if not base_url:
+                raise FileNotFoundError(f"Public tile not found: {public_path}")
+
+            with urllib.request.urlopen(f"{base_url}{tile.url}", timeout=10) as response:
+                return Image.open(response).convert("RGB")
 
         with urllib.request.urlopen(tile.url, timeout=10) as response:
             return Image.open(response).convert("RGB")
@@ -316,7 +324,12 @@ def _obb_points(detection: dict[str, Any]) -> list[list[float]]:
     ]
 
 
-def predict_region(region: str, confidence: float, iou: float) -> dict[str, Any]:
+def predict_region(
+    region: str,
+    confidence: float,
+    iou: float,
+    base_url: str | None = None,
+) -> dict[str, Any]:
     tiles = _load_manifest().get(region, [])[:MAX_TILES_PER_REGION]
     predictions: list[dict[str, Any]] = []
 
@@ -324,7 +337,7 @@ def predict_region(region: str, confidence: float, iou: float) -> dict[str, Any]
         _load_interpreter()
 
     for tile in tiles:
-        image = _open_tile_image(tile)
+        image = _open_tile_image(tile, base_url)
         output = _run_model(_prepare_image(image))
         predictions.extend(_decode_output(output, tile, confidence, iou))
 
@@ -408,7 +421,11 @@ class handler(BaseHTTPRequestHandler):
                 )
                 return
 
-            _json_response(self, 200, predict_region(region, confidence, iou))
+            _json_response(
+                self,
+                200,
+                predict_region(region, confidence, iou, _request_base_url(self)),
+            )
         except Exception as exc:
             print(f"predict failed: {type(exc).__name__}: {exc}")
             _json_response(
@@ -461,6 +478,15 @@ class handler(BaseHTTPRequestHandler):
         finally:
             elapsed_ms = math.floor((time.perf_counter() - started_at) * 1000)
             print(f"POST {self.path} completed in {elapsed_ms}ms")
+
+
+def _request_base_url(handler: BaseHTTPRequestHandler) -> str | None:
+    host = handler.headers.get("Host")
+    if not host:
+        return None
+
+    proto = handler.headers.get("X-Forwarded-Proto") or "https"
+    return f"{proto}://{host}"
 
 
 if __name__ == "__main__":
