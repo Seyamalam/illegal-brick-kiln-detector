@@ -8,13 +8,17 @@
  * @module
  */
 
+import type * as regions from "../regions.js";
+
 import type {
   ApiFromModules,
   FilterApi,
   FunctionReference,
 } from "convex/server";
 
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  regions: typeof regions;
+}>;
 
 /**
  * A utility for referencing Convex functions in your app's public API.
